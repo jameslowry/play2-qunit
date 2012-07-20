@@ -1,0 +1,15 @@
+@(result: models.qunit.TestResult)
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="@result.summary.failed" time="@(result.summary.runtime / 1000)" errors="0" skipped="0" tests="@result.summary.total" name="@result.getFQName()">
+@for(test <- result.tests) {
+  <testcase name="@test.name" time="@(test.runtime / 1000)">
+    @if(!test.result) {
+        <failure type="" message="@test.errorMessage()">
+        <![CDATA[
+          @test.source
+        ]]>
+        </failure>
+    }
+  </testcase>
+}
+</testsuite>

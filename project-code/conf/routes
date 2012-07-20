@@ -1,0 +1,9 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+GET     /qunit                 controllers.qunit.QUnit.list()
+GET     /qunit/run$test</.*>   controllers.qunit.QUnit.run(test: String)
+POST    /qunit/result          controllers.qunit.QUnit.result()
+
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
